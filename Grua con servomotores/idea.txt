@@ -1,0 +1,46 @@
+#include <Servo.h>
+
+int x_pin = A0;
+int y_pin = A1;
+int sw_pin = 2;
+
+Servo servomotor;
+Servo servomotor2;
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
+  pinMode(2, INPUT);
+  digitalWrite(2, HIGH);
+  servomotor.attach(3);
+  servomotor2.attach(5);
+} 
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int x_data = analogRead(A0);
+  int y_data = analogRead(A1);
+  int sw_data = digitalRead(2);
+  int valor_servo = 0; 
+  Serial.print("x_data: ");
+  Serial.println(x_data);
+  Serial.print("\t");
+  Serial.print("y_data: ");
+  Serial.print(y_data);
+  Serial.print("sw_data: ");
+  Serial.print(sw_data);
+  delay(100);
+  while(x_data > 900) {
+    valor_servo +=1 ;
+    delay(600);
+    servomotor.write(valor_servo);
+    break;
+  }
+  while(x_data < 300) {
+    valor_servo = x_data ;
+    delay(300);
+    servomotor2.write(valor_servo);
+    break;
+  }
+}

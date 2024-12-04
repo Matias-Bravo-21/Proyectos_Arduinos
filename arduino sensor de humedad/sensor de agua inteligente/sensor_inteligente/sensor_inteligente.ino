@@ -8,7 +8,7 @@ Servo elbrigido;
 
 // funcion para mover el servomotor 90 grados
 void funcionelBrigido() {
-  elbrigido.write(90); 
+  elbrigido.write(90);
 }
 
 void setup() {
@@ -25,11 +25,11 @@ void setup() {
 void loop() {
   // almacenamos la informacion del sensor
   sensorValue = analogRead(analogInPin);
-  
+
   // imprimimos en el monitor la informacion que reciba
   Serial.print("sensor = ");
   Serial.print(sensorValue);
-  Serial.print("\n"); 
+  Serial.print("\n");
   delay(2);
   // condicionales de ejecucion
   if (sensorValue >= 100) {
